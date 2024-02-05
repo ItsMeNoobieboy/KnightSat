@@ -30,7 +30,7 @@ FOLDER_PATH = (
     "/FlatSat/Images"  # Your image folder path in your GitHub repo: ex. /Images
 )
 
-auto_push = sys.argv[1] and sys.argv[1] == "y"
+auto_push = len(sys.argv) > 1 and sys.argv[1] == "y"
 
 # IMG_LIMIT = 10
 # img_taken = 0
