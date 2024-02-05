@@ -16,7 +16,7 @@ You will need to complete the take_photo() function and configure the VARIABLES 
 # import libraries
 import time
 import board
-import math
+import sys
 from adafruit_lsm6ds.lsm6dsox import LSM6DSOX as LSM6DS
 from adafruit_lis3mdl import LIS3MDL
 
@@ -30,6 +30,7 @@ FOLDER_PATH = (
     "/FlatSat/Images"  # Your image folder path in your GitHub repo: ex. /Images
 )
 
+auto_push = sys.argv[1] and sys.argv[1] == "y"
 
 # IMG_LIMIT = 10
 # img_taken = 0
@@ -96,7 +97,8 @@ def take_photo():
             picam2.capture_file(img_gen(NAME))
 
             # PUSH PHOTO TO GITHUB
-            git_push()
+            if auto_push:
+                git_push()
 
             # PAUSE
             time.sleep(0.5)
