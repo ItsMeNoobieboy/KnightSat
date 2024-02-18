@@ -34,6 +34,24 @@ def img_gen(name, image_time):
     imgname = f"{REPO_PATH}/{FOLDER_PATH}/{name}_{image_time}.jpg"
     return imgname
 
+def git_push():
+    """
+    This function is complete. Stages, commits, and pushes new images to your GitHub repo.
+    """
+    try:
+        repo = Repo(REPO_PATH)
+        origin = repo.remote("origin")
+        print("added remote")
+        origin.pull()
+        print("pulled changes")
+        repo.git.add(REPO_PATH + FOLDER_PATH)
+        repo.index.commit("New Photo")
+        print("made the commit")
+        origin.push()
+        print("pushed changes")
+    except:
+        print("Couldn't upload to git")
+
 
 def take_photo():
     """
@@ -70,6 +88,7 @@ def main():
         shake_time = take_photo()
         image_registration(f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg",f"{REPO_PATH}/{FOLDER_PATH}/with_outages_{shake_time}.jpg", f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}")
         find_difference(f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg", f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}", f"{REPO_PATH}/{FOLDER_PATH}/outage_map_{shake_time}")
+        git_push()
 
 
 if __name__ == "__main__":
