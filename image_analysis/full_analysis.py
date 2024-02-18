@@ -1,6 +1,8 @@
 from image_registration import image_registration
 from find_outages import find_difference
 
+from git_push import git_push
+
 import time
 import board
 import sys
@@ -33,25 +35,6 @@ def img_gen(name, image_time):
     """
     imgname = f"{REPO_PATH}/{FOLDER_PATH}/{name}_{image_time}.jpg"
     return imgname
-
-def git_push():
-    """
-    This function is complete. Stages, commits, and pushes new images to your GitHub repo.
-    """
-    try:
-        repo = Repo(REPO_PATH)
-        origin = repo.remote("origin")
-        print("added remote")
-        origin.pull()
-        print("pulled changes")
-        repo.git.add(REPO_PATH + FOLDER_PATH)
-        repo.index.commit("New Photo")
-        print("made the commit")
-        origin.push()
-        print("pushed changes")
-    except:
-        print("Couldn't upload to git")
-
 
 def take_photo():
     """
