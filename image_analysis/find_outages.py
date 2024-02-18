@@ -24,4 +24,4 @@ def find_difference(no_outage_path, with_outage_path, output_path):
 
 
 
-find_difference("image_analysis/satelite_images/city.png", "image_analysis/aligned_output/test1.png", "image_analysis/differences/difference7")
+# find_difference("image_analysis/satelite_images/city.png", "image_analysis/aligned_output/test1.png", "image_analysis/differences/difference7")

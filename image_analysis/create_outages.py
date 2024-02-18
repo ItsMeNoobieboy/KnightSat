@@ -36,4 +36,4 @@ def save_image(image_url, output_name):
         print(f"Failed to download image. Status code: {response.status_code}")
 
 
-edit_image("image_analysis/satelite_images/city.png", "image_analysis/masks/mask.png", "image_analysis/with_outages/with_outages7")
+# edit_image("image_analysis/satelite_images/city.png", "image_analysis/masks/mask.png", "image_analysis/with_outages/with_outages7")

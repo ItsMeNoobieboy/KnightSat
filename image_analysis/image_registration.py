@@ -58,4 +58,4 @@ def image_registration(no_outages_path, with_outages_path, output_path):
     # Save the output. 
     cv2.imwrite(f'{output_path}.png', transformed_img) 
 
-image_registration("image_analysis/satelite_images/city.png", "image_analysis/misaligned_input/with_outages6.jpeg", "image_analysis/aligned_output/test1")
+# image_registration("image_analysis/satelite_images/city.png", "image_analysis/misaligned_input/with_outages6.jpeg", "image_analysis/aligned_output/test1")
