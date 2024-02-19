@@ -23,8 +23,6 @@ from adafruit_lis3mdl import LIS3MDL
 from git import Repo
 from picamera2 import Picamera2, Preview
 
-from git_push import git_push
-
 # VARIABLES
 THRESHOLD = 15  # Any desired value from the accelerometer
 REPO_PATH = "/home/pi/Desktop/CubesatChallenge"  # Your github repo path: ex. /home/pi/FlatSatChallenge
@@ -54,6 +52,24 @@ def img_gen(name):
     t = time.strftime("_%H%M%S")
     imgname = f"{REPO_PATH}/{FOLDER_PATH}/{name}{t}.jpg"
     return imgname
+
+def git_push():
+    """
+    This function is complete. Stages, commits, and pushes new images to your GitHub repo.
+    """
+    try:
+        repo = Repo(REPO_PATH)
+        origin = repo.remote("origin")
+        print("added remote")
+        origin.pull()
+        print("pulled changes")
+        repo.git.add(REPO_PATH + FOLDER_PATH)
+        repo.index.commit("New Photo")
+        print("made the commit")
+        origin.push()
+        print("pushed changes")
+    except:
+        print("Couldn't upload to git")
 
 
 def take_photo():
