@@ -85,6 +85,15 @@ def take_photo():
 def main():
     while True:
         shake_time = take_photo()
+
+        no_outages_path = f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg"
+        with_outages_path = f"{REPO_PATH}/{FOLDER_PATH}/with_outages_{shake_time}.jpg"
+        aligned_image_path = f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}"
+
+        print(no_outages_path)
+        print(with_outages_path)
+        print(aligned_image_path)
+        
         image_registration(f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg",f"{REPO_PATH}/{FOLDER_PATH}/with_outages_{shake_time}.jpg", f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}")
         find_difference(f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg", f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}", f"{REPO_PATH}/{FOLDER_PATH}/outage_map_{shake_time}")
         git_push()
