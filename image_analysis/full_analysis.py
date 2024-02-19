@@ -31,7 +31,7 @@ def img_gen(name, image_time):
     Parameters:
         name (str): your name ex. MasonM
     """
-    imgname = f"cubesat_output/{image_time}.jpg" #f"{REPO_PATH}/{FOLDER_PATH}/{name}_{image_time}.jpg"
+    imgname = f"{REPO_PATH}/{FOLDER_PATH}/{name}_{image_time}.jpg"
     return imgname
 
 def git_push():
@@ -66,7 +66,7 @@ def take_photo():
             print(f"Total reached {total:.3f}")
             break
 
-    shake_time = time.strftime("%m/%d/%Y-%H:%M")
+    shake_time = time.strftime("%m-%d-%Y_%H:%M")
 
     picam2.start()
     time.sleep(2)
