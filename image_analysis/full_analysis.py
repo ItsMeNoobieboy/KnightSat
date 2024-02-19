@@ -95,7 +95,7 @@ def main():
         print(aligned_image_path)
 
         image_registration(f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg",f"{REPO_PATH}/{FOLDER_PATH}/with_outages_{shake_time}.jpg", f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}")
-        find_difference(f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg", f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}", f"{REPO_PATH}/{FOLDER_PATH}/outage_map_{shake_time}")
+        find_difference(f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg", f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}.png", f"{REPO_PATH}/{FOLDER_PATH}/outage_map_{shake_time}")
         git_push()
 
 
