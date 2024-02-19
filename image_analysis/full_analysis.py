@@ -73,11 +73,11 @@ def take_photo():
 
     # TAKE PHOTO
 
-    picam2.capture_file(img_gen("no_outage", shake_time))
+    picam2.capture_file(img_gen("no_outages", shake_time))
 
     time.sleep(2)
 
-    picam2.capture_file(img_gen("with_outage", shake_time))
+    picam2.capture_file(img_gen("with_outages", shake_time))
 
     return shake_time
 
@@ -93,7 +93,7 @@ def main():
         print(no_outages_path)
         print(with_outages_path)
         print(aligned_image_path)
-        
+
         image_registration(f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg",f"{REPO_PATH}/{FOLDER_PATH}/with_outages_{shake_time}.jpg", f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}")
         find_difference(f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg", f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}", f"{REPO_PATH}/{FOLDER_PATH}/outage_map_{shake_time}")
         git_push()
