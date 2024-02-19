@@ -31,7 +31,7 @@ def img_gen(name, image_time):
     Parameters:
         name (str): your name ex. MasonM
     """
-    imgname = f"{REPO_PATH}/{FOLDER_PATH}/{name}_{image_time}.jpg"
+    imgname = f"cubesat_output/{image_time}.jpg" #f"{REPO_PATH}/{FOLDER_PATH}/{name}_{image_time}.jpg"
     return imgname
 
 def git_push():
