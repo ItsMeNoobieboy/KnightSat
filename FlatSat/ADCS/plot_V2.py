@@ -48,15 +48,15 @@ def animate(i, xs, type,y1,y2,y3, mag_offset, gyro_offset, initial_angle):
     magY = magY - mag_offset[1]
     magZ = magZ - mag_offset[2]
     gyroX, gyroY, gyroZ = accel_gyro.gyro #rad/s
-    gyroX = convert_to_degrees(gyroX)- gyro_offset[0]
-    gyroY = convert_to_degrees(gyroY)- gyro_offset[1]
-    gyroZ = convert_to_degrees(gyroZ)- gyro_offset[2]
+    gyroX = convert_to_degrees(gyroX) - gyro_offset[0]
+    gyroY = convert_to_degrees(gyroY) - gyro_offset[1]
+    gyroZ = convert_to_degrees(gyroZ) - gyro_offset[2]
     xs.append(time.time())
 
     if type == 'am':
-       y1.append(roll_am(accelX,accelY,accelZ))
-       y2.append(pitch_am(accelX,accelY,accelZ))
-       y3.append(yaw_am(accelX,accelY,accelZ,magX,magY,magZ))
+       y1.append(convert_to_degrees(roll_am(accelX,accelY,accelZ)))
+       y2.append(convert_to_degrees(pitch_am(accelX,accelY,accelZ)))
+       y3.append(convert_to_degrees(yaw_am(accelX,accelY,accelZ,magX,magY,magZ)))
        ax.clear()
        ax.plot(xs,y1,label = "Roll")
        ax.plot(xs,y2,label = "Pitch")
