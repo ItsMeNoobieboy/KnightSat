@@ -12,7 +12,6 @@ relies on your sensor functions here.
 import time
 import math
 import numpy as np
-import time
 import os
 import board
 import busio
@@ -45,27 +44,46 @@ def yaw_am(accelX,accelY,accelZ,magX,magY,magZ):
     return math.atan(-mag_y, mag_x)
 
 #Activity 2: RPY based on gyroscope
+# only going to utilize magnetometer & accelerometer measurements, doesn't need this functionality
 def roll_gy(prev_angle, delT, gyro):
     #TODO NOT DONE
-    roll = 0
-    return roll
+    return
 def pitch_gy(prev_angle, delT, gyro):
     #TODO NOT DONE
-    pitch = 0
-    return pitch
+    return
 def yaw_gy(prev_angle, delT, gyro):
     #TODO NOT DONE
-    yaw = 0
-    return yaw
+    return
 
 #Activity 3: Sensor calibration
 def calibrate_mag():
     #TODO: Set up lists, time, etc
-    #print("Preparing to calibrate magnetometer. Please wave around.")
-    #time.sleep(3)
-    #print("Calibrating...")
+    magX, magY, magZ = mag.magnetic #gauss
+    startT = time.time()
+    print("Preparing to calibrate magnetometer. Please wave around.")
+    maxX = magX
+    minX = magX
+    maxY = magY
+    minY = magY
+    maxZ = magZ
+    minZ = magZ
+    while(time.time() - startT < 3):
+        if magX > maxX:
+            maxX = magX
+        elif magX < minX:
+            minX = magX
+        if magY > maxY:
+            magY = magY
+        elif magY < minY:
+            minY = magY
+        if magZ > maxZ:
+            maxZ = magZ
+        elif magZ < minZ:
+            minZ = magZ 
+    print("Calibrating...")
+    offsetX = (maxX+maxY)/2
     #TODO: Calculate calibration constants
-   # print("Calibration complete.")
+    print("Calibration complete.")
     return [0,0,0]
 
 def calibrate_gyro():
