@@ -41,7 +41,7 @@ def yaw_am(accelX,accelY,accelZ,magX,magY,magZ):
     mag_x += magY*math.sin(roll_am(accelX,accelY,accelZ))*math.sin(pitch_am(accelX,accelY,accelZ))
     mag_x += magZ*math.cos(roll_am(accelX,accelY,accelZ))*math.sin(pitch_am(accelX,accelY,accelZ))
     mag_y = magY*math.cos(roll_am(accelX, accelY, accelZ)) - magZ*math.sin(roll_am(accelX, accelY, accelZ))
-    return math.atan(-mag_y, mag_x)
+    return math.atan(-mag_y/mag_x)
 
 #Activity 2: RPY based on gyroscope
 # only going to utilize magnetometer & accelerometer measurements, doesn't need this functionality
@@ -81,10 +81,12 @@ def calibrate_mag():
         elif magZ < minZ:
             minZ = magZ 
     print("Calibrating...")
-    offsetX = (maxX+maxY)/2
+    offsetX = (maxX+minY)/2
+    offsetY = (maxY+minY)/2
+    offsetZ = (maxZ+minZ)/2
     #TODO: Calculate calibration constants
     print("Calibration complete.")
-    return [0,0,0]
+    return [offsetX,offsetY,offsetZ]
 
 def calibrate_gyro():
     #TODO
