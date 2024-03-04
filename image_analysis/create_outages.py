@@ -5,14 +5,15 @@ from openai import OpenAI
 OPENAI_API_KEY = "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"
 client = OpenAI(api_key=OPENAI_API_KEY)
 
+
 def edit_image(original, mask, output_name):
     response = client.images.edit(
-    model = "dall-e-2",
-    image = open(original, "rb"),
-    mask = open(mask, "rb"),
-    prompt = "fill the ENTIRE mask with a DEVASTATING, EXTREMELY, VERY LARGE POWER OUTAGE. the ENTIRE area is nearly pitch dark.",
-    n=1,
-    size = "1024x1024"
+        model="dall-e-2",
+        image=open(original, "rb"),
+        mask=open(mask, "rb"),
+        prompt="fill the ENTIRE mask with a DEVASTATING, EXTREMELY, VERY LARGE POWER OUTAGE. the ENTIRE area is nearly pitch dark.",
+        n=1,
+        size="1024x1024",
     )
     image_url = response.data[0].url
     save_image(image_url, output_name)
@@ -23,6 +24,7 @@ def edit_image(original, mask, output_name):
 from PIL import Image
 import requests
 from io import BytesIO
+
 
 def save_image(image_url, output_name):
 

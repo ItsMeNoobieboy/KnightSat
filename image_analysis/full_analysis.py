@@ -13,9 +13,7 @@ from picamera2 import Picamera2, Preview
 # VARIABLES
 THRESHOLD = 15  # Any desired value from the accelerometer
 REPO_PATH = "/home/pi/Desktop/CubesatChallenge"  # Your github repo path: ex. /home/pi/FlatSatChallenge
-FOLDER_PATH = (
-    "image_analysis/cubesat_output"  # Your image folder path in your GitHub repo: ex. /Images
-)
+FOLDER_PATH = "image_analysis/cubesat_output"  # Your image folder path in your GitHub repo: ex. /Images
 
 # imu and camera initialization
 i2c = board.I2C()
@@ -34,6 +32,7 @@ def img_gen(name, image_time):
     imgname = f"{REPO_PATH}/{FOLDER_PATH}/{name}_{image_time}.jpg"
     return imgname
 
+
 def git_push():
     """
     This function is complete. Stages, commits, and pushes new images to your GitHub repo.
@@ -51,6 +50,7 @@ def git_push():
         print("pushed changes")
     except:
         print("Couldn't upload to git")
+
 
 def take_photo():
     """
@@ -94,8 +94,16 @@ def main():
         print(with_outages_path)
         print(aligned_image_path)
 
-        image_registration(f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg",f"{REPO_PATH}/{FOLDER_PATH}/with_outages_{shake_time}.jpg", f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}")
-        find_difference(f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg", f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}.png", f"{REPO_PATH}/{FOLDER_PATH}/outage_map_{shake_time}")
+        image_registration(
+            f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg",
+            f"{REPO_PATH}/{FOLDER_PATH}/with_outages_{shake_time}.jpg",
+            f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}",
+        )
+        find_difference(
+            f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg",
+            f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}.png",
+            f"{REPO_PATH}/{FOLDER_PATH}/outage_map_{shake_time}",
+        )
         git_push()
 
 

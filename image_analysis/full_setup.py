@@ -11,6 +11,12 @@ print(f"Image downloaded to {output_path}.png")
 
 mask_name = input("Enter the name of the mask file (this must be a .png): ")
 
-edit_image(output_path, f"image_analysis/masks/{mask_name}.png", f"image_analysis/with_outages/{latitude},{longitude}")
+edit_image(
+    output_path,
+    f"image_analysis/masks/{mask_name}.png",
+    f"image_analysis/with_outages/{latitude},{longitude}",
+)
 
-print(f"Image with outages created at image_analysis/with_outages/{latitude},{longitude}.png")
+print(
+    f"Image with outages created at image_analysis/with_outages/{latitude},{longitude}.png"
+)

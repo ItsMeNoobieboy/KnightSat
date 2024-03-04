@@ -53,6 +53,7 @@ def img_gen(name):
     imgname = f"{REPO_PATH}/{FOLDER_PATH}/{name}{t}.jpg"
     return imgname
 
+
 def git_push():
     """
     This function is complete. Stages, commits, and pushes new images to your GitHub repo.
