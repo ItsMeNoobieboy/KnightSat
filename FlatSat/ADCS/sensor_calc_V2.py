@@ -21,9 +21,6 @@ i2c = busio.I2C(board.SCL, board.SDA)
 accel_gyro = LSM6DS(i2c)
 mag = LIS3MDL(i2c)
 
-def convert_to_degrees(radians):
-    return radians * 180 / math.pi
-
 #Activity 1: RPY based on accelerometer and magnetometer
 def roll_am(accelX,accelY,accelZ):
     roll = math.atan(accelY / (accelX**2+accelZ**2) ** .5)
@@ -91,9 +88,9 @@ def calibrate_gyro():
     #print("Calibration complete.")
     return [0, 0, 0]
 
-def set_initial(mag_offset = [0,0,0]):
+def get_rpy(mag_offset = [0,0,0]):
     """
-    This function is complete. Finds initial RPY values.
+    This function is complete. Finds RPY values.
 
     Parameters:
         mag_offset (list): magnetometer calibration offsets
