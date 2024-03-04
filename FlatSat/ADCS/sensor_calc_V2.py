@@ -45,15 +45,9 @@ def yaw_am(accelX,accelY,accelZ,magX,magY,magZ):
 
 #Activity 2: RPY based on gyroscope
 # only going to utilize magnetometer & accelerometer measurements, doesn't need this functionality
-def roll_gy(prev_angle, delT, gyro):
-    #TODO NOT DONE
-    return
-def pitch_gy(prev_angle, delT, gyro):
-    #TODO NOT DONE
-    return
-def yaw_gy(prev_angle, delT, gyro):
-    #TODO NOT DONE
-    return
+def roll_gy(prev_angle, delT, gyro): return
+def pitch_gy(prev_angle, delT, gyro): return
+def yaw_gy(prev_angle, delT, gyro): return
 
 #Activity 3: Sensor calibration
 def calibrate_mag():
