@@ -30,6 +30,9 @@ y2 = []
 y3 = []
 rpy = [0,0,0]
 
+def convert_to_degrees(radians):
+    return radians * (180/np.pi)
+
 def animate(i, xs, type,y1,y2,y3, mag_offset, gyro_offset, initial_angle):
     if len(y1) ==0:
         prev_ang = initial_angle
@@ -45,9 +48,9 @@ def animate(i, xs, type,y1,y2,y3, mag_offset, gyro_offset, initial_angle):
     magY = magY - mag_offset[1]
     magZ = magZ - mag_offset[2]
     gyroX, gyroY, gyroZ = accel_gyro.gyro #rad/s
-    gyroX = gyroX * (180/np.pi)- gyro_offset[0]
-    gyroY = gyroY * (180/np.pi)- gyro_offset[1]
-    gyroZ = gyroZ * (180/np.pi)- gyro_offset[2]
+    gyroX = convert_to_degrees(gyroX)- gyro_offset[0]
+    gyroY = convert_to_degrees(gyroY)- gyro_offset[1]
+    gyroZ = convert_to_degrees(gyroZ)- gyro_offset[2]
     xs.append(time.time())
 
     if type == 'am':
@@ -95,7 +98,7 @@ def plot_data(type = 'am'):
     mag_offset = calibrate_mag()
     initial_angle = set_initial(mag_offset)
     gyro_offset = calibrate_gyro()
-    ani = animation.FuncAnimation(fig, animate, fargs =(xs,type,y1,y2,y3,mag_offset,gyro_offset,initial_angle), interval = 1000)
+    ani = animation.FuncAnimation(fig, animate, fargs =(xs,type,y1,y2,y3,mag_offset,gyro_offset,initial_angle), interval = 250)
     plt.show()
 
 
