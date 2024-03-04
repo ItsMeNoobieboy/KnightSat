@@ -23,18 +23,18 @@ mag = LIS3MDL(i2c)
 
 #Activity 1: RPY based on accelerometer and magnetometer
 def roll_am(accelX,accelY,accelZ):
-    roll = math.atan(accelY / (accelX**2+accelZ**2) ** .5)
+    roll = math.atan(accelY / (accelX ** 2 + accelZ ** 2) ** .5)
     return roll
 
 def pitch_am(accelX,accelY,accelZ):
-    pitch = math.atan(accelX / (accelY**2+accelZ**2) ** .5)
+    pitch = math.atan(accelX / (accelY ** 2 + accelZ ** 2) ** .5)
     return pitch
 
 def yaw_am(accelX,accelY,accelZ,magX,magY,magZ):
-    mag_x = magX*math.cos(pitch_am(accelX,accelY,accelZ))
-    mag_x += magY*math.sin(roll_am(accelX,accelY,accelZ))*math.sin(pitch_am(accelX,accelY,accelZ))
-    mag_x += magZ*math.cos(roll_am(accelX,accelY,accelZ))*math.sin(pitch_am(accelX,accelY,accelZ))
-    mag_y = magY*math.cos(roll_am(accelX, accelY, accelZ)) - magZ*math.sin(roll_am(accelX, accelY, accelZ))
+    mag_x = magX * math.cos(pitch_am(accelX,accelY,accelZ))
+    mag_x += magY * math.sin(roll_am(accelX,accelY,accelZ)) * math.sin(pitch_am(accelX,accelY,accelZ))
+    mag_x += magZ * math.cos(roll_am(accelX,accelY,accelZ)) * math.sin(pitch_am(accelX,accelY,accelZ))
+    mag_y = magY * math.cos(roll_am(accelX, accelY, accelZ)) - magZ * math.sin(roll_am(accelX, accelY, accelZ))
     return math.atan(-1 * mag_y / mag_x)
 
 #Activity 2: RPY based on gyroscope
@@ -70,9 +70,9 @@ def calibrate_mag():
         minZ = min(minZ, magZ)
 
     print("Calibrating...")
-    offsetX = (maxX+minY)/2
-    offsetY = (maxY+minY)/2
-    offsetZ = (maxZ+minZ)/2
+    offsetX = (maxX + minX) / 2
+    offsetY = (maxY + minY) / 2
+    offsetZ = (maxZ + minZ) / 2
     
     #TODO: Calculate calibration constants
     print("Calibration complete.")

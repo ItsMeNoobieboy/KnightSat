@@ -26,7 +26,7 @@ picam2 = Picamera2()
 def capture(dir ='roll', target_angle = 30):
     #Calibration lines should remain commented out until you implement calibration
     offset_mag = calibrate_mag()
-    offset_gyro =calibrate_gyro()
+    offset_gyro = calibrate_gyro()
     initial_angle = get_rpy(offset_mag)
     prev_angle = initial_angle
     print("Begin moving camera.")
