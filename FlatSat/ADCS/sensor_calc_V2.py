@@ -63,14 +63,15 @@ def calibrate_mag():
     print("X: ", magX)
     print("Z: ", magZ)
     while(time.time() - startT < 3):
+        magX, magY, magZ = mag.magnetic
         maxX = max(maxX, magX)
         minX = min(minX, magX)
         maxY = max(maxY, magY)
         minY = min(minY, magY)
         maxZ = max(maxZ, magZ)
         minZ = min(minZ, magZ)
-    print("X: ", magX)
-    print("Z: ", magZ)
+    print("X: ", maxX)
+    print("Z: ", maxZ)
     offsetX = (maxX + minX) / 2 
     offsetY = (maxY + minY) / 2
     offsetZ = (maxZ + minZ) / 2
