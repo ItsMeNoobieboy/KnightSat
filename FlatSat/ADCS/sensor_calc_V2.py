@@ -63,6 +63,7 @@ def calibrate_mag():
 
     while(time.time() - startT < 3):
         maxX = max(maxX, magX)
+        print("X now: ", magX, " X max: ", maxX)
         minX = min(minX, magX)
         maxY = max(maxY, magY)
         minY = min(minY, magY)
