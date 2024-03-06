@@ -60,17 +60,17 @@ def calibrate_mag():
     maxX = minX = magX
     maxY = minY = magY
     maxZ = minZ = magZ
-
+    print("X: ", magX)
+    print("Z: ", magZ)
     while(time.time() - startT < 3):
         maxX = max(maxX, magX)
-        print("X now: ", magX, " X max: ", maxX)
         minX = min(minX, magX)
         maxY = max(maxY, magY)
         minY = min(minY, magY)
         maxZ = max(maxZ, magZ)
         minZ = min(minZ, magZ)
-
-    print("Calibrating...")
+    print("X: ", magX)
+    print("Z: ", magZ)
     offsetX = (maxX + minX) / 2 
     offsetY = (maxY + minY) / 2
     offsetZ = (maxZ + minZ) / 2
