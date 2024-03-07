@@ -35,7 +35,7 @@ def yaw_am(accelX,accelY,accelZ,magX,magY,magZ):
     mag_x += magY * math.sin(roll_am(accelX,accelY,accelZ)) * math.sin(pitch_am(accelX,accelY,accelZ))
     mag_x += magZ * math.cos(roll_am(accelX,accelY,accelZ)) * math.sin(pitch_am(accelX,accelY,accelZ))
     mag_y = magY * math.cos(roll_am(accelX, accelY, accelZ)) - magZ * math.sin(roll_am(accelX, accelY, accelZ))
-    return math.atan(-1 * mag_y / mag_x)+roll_am(accelX,accelY,accelZ)-pitch_am(accelX,accelY,accelZ)
+    return math.atan(-1 * mag_y / mag_x)
 
 #Activity 2: RPY based on gyroscope
 # only going to utilize magnetometer & accelerometer measurements, doesn't need this functionality
