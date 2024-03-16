@@ -19,3 +19,4 @@ __pycache__/
 .history/
 *.vsix
 .env
+*.env
