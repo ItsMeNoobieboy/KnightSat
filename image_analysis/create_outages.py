@@ -1,25 +1,36 @@
 # adapted from https://platform.openai.com/docs/guides/images/usage
 
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
 
-OPENAI_API_KEY = "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"
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-
-def edit_image(original, mask, output_name):
-    response = client.images.edit(
-        model="dall-e-2",
-        image=open(original, "rb"),
-        mask=open(mask, "rb"),
-        prompt="fill the ENTIRE mask with a DEVASTATING, EXTREMELY, VERY LARGE POWER OUTAGE. the ENTIRE area is nearly pitch dark.",
-        n=1,
-        size="1024x1024",
+def request_image(output_name):
+    response = client.images.generate(
+    model = "dall-e-2",
+    prompt = "Generate a detailed night-time satellite image of Boston from directly overhead. Highlight the city lights clearly and show the urban landscape with precision. The image should capture streets, landmarks, and buildings, emphasizing the luminosity of the city lights. The perspective should feel as if viewing Boston from above at night.",
+    n=1,
+    size = "1024x1024"
     )
     image_url = response.data[0].url
     save_image(image_url, output_name)
 
-
-# adapted from chatgpt output
+def edit_image(original, mask, output_name):
+    response = client.images.edit(
+    model = "dall-e-2",
+    image = open(original, "rb"),
+    mask = open(mask, "rb"),
+    prompt = "Generate a satellite image depicting a massive power outage covering the entire area, leaving it nearly pitch dark. Ensure the blackout fills the entire mask, with only faint traces of light, if any. Highlight the stark difference between the illuminated areas and the engulfing darkness to convey the extent of the outage.",
+    n=1,
+    size = "1024x1024"
+    )
+    image_url = response.data[0].url
+    save_image(image_url, output_name)
 
 from PIL import Image
 import requests
@@ -39,3 +50,6 @@ def save_image(image_url, output_name):
 
 
 # edit_image("image_analysis/satelite_images/city.png", "image_analysis/masks/mask.png", "image_analysis/with_outages/with_outages7")
+        
+request_image("image_try4")
+edit_image("image_try4.png", "image_analysis/masks/mask.png", "image_try3_with_outages")
