@@ -63,7 +63,8 @@ class DrawingApp:
     def generate_new(self, event=None):
         mask = self.generate_mask()
 
-        with_outages = edit_image(image_to_binary(self.background_image), image_to_binary(mask), "output_hopefully_good")
+        with_outages = edit_image(image_to_binary(self.background_image.copy().crop((0, 0, 1024, 1024))), image_to_binary(mask.copy().crop((0, 0, 1024, 1024))))
+        with_outages.save("image_analysis/image_test_pairs/london/with_outages.png")
         print("finished!")
 
 
@@ -74,7 +75,7 @@ def main():
     print("Which image would you like to use?")
     image_path = input()
     root = tk.Tk()
-    app = DrawingApp(root, f"image_analysis/satelite_images/{image_path}.png")
+    app = DrawingApp(root, f"image_analysis/satelite_images/{image_path}")
     root.mainloop()
 
 if __name__ == "__main__":
