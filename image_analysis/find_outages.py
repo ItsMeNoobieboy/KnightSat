@@ -2,10 +2,7 @@ from PIL import Image, ImageDraw, ImageChops
 import numpy as np
 
 
-def find_difference(no_outage_path, with_outage_path, output_path):
-
-    no_outage = Image.open(no_outage_path)
-    with_outage = Image.open(with_outage_path)
+def find_difference(no_outage, with_outage):
 
     no_outage = no_outage.convert("RGB")
     with_outage = with_outage.convert("RGB")
@@ -23,7 +20,7 @@ def find_difference(no_outage_path, with_outage_path, output_path):
         draw.rectangle([coord[1], coord[0], coord[1] + 1, coord[0] + 1], outline="red")
 
     # Save the result
-    no_outage.save(f"{output_path}.png")
+    return no_outage
 
 
 # find_difference("image_analysis/satelite_images/city.png", "image_analysis/aligned_output/test1.png", "image_analysis/differences/difference7")

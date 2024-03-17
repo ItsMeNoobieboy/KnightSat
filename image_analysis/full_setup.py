@@ -13,8 +13,8 @@ mask_name = input("Enter the name of the mask file (this must be a .png): ")
 
 edit_image(
     output_path,
-    f"image_analysis/masks/{mask_name}.png",
-    f"image_analysis/with_outages/{latitude},{longitude}",
+    open(f"image_analysis/masks/{mask_name}.png", "rb"),
+    open(f"image_analysis/with_outages/{latitude},{longitude}", "rb")
 )
 
 print(
