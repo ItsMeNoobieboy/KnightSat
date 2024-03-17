@@ -120,8 +120,8 @@ def main():
     while True:
         shake_time = take_photo()
 
-        no_outages_path = img_gen("no_outages.jpg", shake_time)
-        with_outages_path = img_gen("with_outages.jpg", shake_time)
+        no_outages_path = img_gen("no_outages", shake_time)
+        with_outages_path = img_gen("with_outages", shake_time)
         aligned_image_path = f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/aligned_image"
 
         print(no_outages_path)
