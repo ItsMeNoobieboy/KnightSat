@@ -16,7 +16,7 @@ def find_difference(no_outage_path, with_outage_path, output_path):
         np.array(ImageChops.difference(no_outage, with_outage)), axis=-1
     )
 
-    coords = np.column_stack(np.where(difference > 300))
+    coords = np.column_stack(np.where(difference > 250))
 
     draw = ImageDraw.Draw(no_outage)
     for coord in coords:
