@@ -4,6 +4,8 @@ from find_outages import find_difference
 import time
 import board
 import sys
+import os
+
 from adafruit_lsm6ds.lsm6dsox import LSM6DSOX as LSM6DS
 from adafruit_lis3mdl import LIS3MDL
 
@@ -83,7 +85,7 @@ def take_photo():
 
     picam2.start()
 
-    for i in range(3):
+    for _ in range(3):
         GPIO.output(LED_PIN, True)
         time.sleep(.1)
         GPIO.output(LED_PIN, False)
@@ -117,23 +119,25 @@ def main():
     while True:
         shake_time = take_photo()
 
-        no_outages_path = f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg"
-        with_outages_path = f"{REPO_PATH}/{FOLDER_PATH}/with_outages_{shake_time}.jpg"
-        aligned_image_path = f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}"
+        os.makedirs(f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}", exist_ok=True)
+
+        no_outages_path = f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/no_outages.jpg"
+        with_outages_path = f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/with_outages.jpg"
+        aligned_image_path = f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/aligned_image"
 
         print(no_outages_path)
         print(with_outages_path)
         print(aligned_image_path)
 
         image_registration(
-            f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg",
-            f"{REPO_PATH}/{FOLDER_PATH}/with_outages_{shake_time}.jpg",
-            f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}",
+            f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/no_outages.jpg",
+            f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/with_outages.jpg",
+            f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/aligned_image",
         )
         find_difference(
-            f"{REPO_PATH}/{FOLDER_PATH}/no_outages_{shake_time}.jpg",
-            f"{REPO_PATH}/{FOLDER_PATH}/aligned_image_{shake_time}.png",
-            f"{REPO_PATH}/{FOLDER_PATH}/outage_map_{shake_time}",
+            f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/no_outages.jpg",
+            f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/aligned_image.png",
+            f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/outage_map",
         )
         git_push()
 
