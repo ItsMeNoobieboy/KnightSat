@@ -81,7 +81,7 @@ def take_photo():
             print(f"Total reached {total:.3f}")
             break
 
-    shake_time = time.strftime("%m-%d-%Y_%H:%M")
+    shake_time = time.strftime("%m-%d-%Y_%H:%M:%S")
     os.makedirs(f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}", exist_ok=True)
 
     picam2.start()
