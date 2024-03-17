@@ -10,6 +10,12 @@ from adafruit_lis3mdl import LIS3MDL
 from git import Repo
 from picamera2 import Picamera2, Preview
 
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)
+LED_PIN = 26
+GPIO.setup(LED_PIN, GPIO.OUT)
+
 # VARIABLES
 THRESHOLD = 15  # Any desired value from the accelerometer
 REPO_PATH = "/home/pi/Desktop/CubesatChallenge"  # Your github repo path: ex. /home/pi/FlatSatChallenge
@@ -69,15 +75,32 @@ def take_photo():
     shake_time = time.strftime("%m-%d-%Y_%H:%M")
 
     picam2.start()
-    time.sleep(2)
+
+    for i in range(3):
+        GPIO.output(LED_PIN, True)
+        time.sleep(.2)
+        GPIO.output(LED_PIN, False)
+
+    time.sleep(1)
 
     # TAKE PHOTO
 
+    GPIO.output(LED_PIN, True)
+    time.sleep(.5)
+    
     picam2.capture_file(img_gen("no_outages", shake_time))
+
+    GPIO.output(LED_PIN, False)
 
     time.sleep(2)
 
+
+    GPIO.output(LED_PIN, True)
+    time.sleep(.5)
+    
     picam2.capture_file(img_gen("with_outages", shake_time))
+
+    GPIO.output(LED_PIN, False)
 
     return shake_time
 
