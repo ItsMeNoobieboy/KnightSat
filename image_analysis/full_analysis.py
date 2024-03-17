@@ -92,7 +92,7 @@ def take_photo():
         GPIO.output(LED_PIN, False)
         time.sleep(.1)
 
-    time.sleep(1)
+    time.sleep(3)
 
     # TAKE PHOTO
 
