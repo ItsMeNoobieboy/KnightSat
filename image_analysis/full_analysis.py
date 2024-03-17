@@ -56,7 +56,12 @@ def git_push():
         print("made the commit")
         origin.push()
         print("pushed changes")
-    except:
+
+    except Exception as e:
+        print(e)
+        # Print important information about the exception
+        print(f"Exception occurred: {type(e).__name__}")
+        print(f"Exception message: {str(e)}")
         print("Couldn't upload to git")
 
 
