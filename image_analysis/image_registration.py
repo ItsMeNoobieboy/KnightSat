@@ -31,7 +31,6 @@ def image_registration(no_outages_path, with_outages_path, output_path):
 
     # Match the two sets of descriptors.
     matches = list(matcher.match(d1, d2))
-    print(type(matches))
 
     # Sort matches on the basis of their Hamming distance.
     matches.sort(key=lambda x: x.distance)
