@@ -39,7 +39,7 @@ def img_gen(name, image_time):
     Parameters:
         name (str): your name ex. MasonM
     """
-    imgname = f"{REPO_PATH}/{FOLDER_PATH}/{name}_{image_time}.jpg"
+    imgname = f"{REPO_PATH}/{FOLDER_PATH}/{image_time}/{name}.jpg"
     return imgname
 
 
@@ -121,8 +121,8 @@ def main():
 
         os.makedirs(f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}", exist_ok=True)
 
-        no_outages_path = f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/no_outages.jpg"
-        with_outages_path = f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/with_outages.jpg"
+        no_outages_path = img_gen("no_outages.jpg", shake_time)
+        with_outages_path = img_gen("with_outages.jpg", shake_time)
         aligned_image_path = f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/aligned_image"
 
         print(no_outages_path)
@@ -130,12 +130,12 @@ def main():
         print(aligned_image_path)
 
         image_registration(
-            f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/no_outages.jpg",
-            f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/with_outages.jpg",
+            no_outages_path,
+            with_outages_path,
             f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/aligned_image",
         )
         find_difference(
-            f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/no_outages.jpg",
+            no_outages_path,
             f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/aligned_image.png",
             f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/outage_map",
         )
