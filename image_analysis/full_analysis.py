@@ -82,6 +82,7 @@ def take_photo():
             break
 
     shake_time = time.strftime("%m-%d-%Y_%H:%M")
+    os.makedirs(f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}", exist_ok=True)
 
     picam2.start()
 
@@ -118,8 +119,6 @@ def take_photo():
 def main():
     while True:
         shake_time = take_photo()
-
-        os.makedirs(f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}", exist_ok=True)
 
         no_outages_path = img_gen("no_outages.jpg", shake_time)
         with_outages_path = img_gen("with_outages.jpg", shake_time)
