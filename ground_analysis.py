@@ -19,7 +19,10 @@ while True:
 
     sleep(1)
 
-    origin.pull()
+    try:
+        origin.pull()
+    except git.exc.GitCommandError as e:
+        print(f"Failed to pull from the repository: {e}")
 
     new_commit = repo.head.commit
 
