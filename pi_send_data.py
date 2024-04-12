@@ -83,6 +83,7 @@ def take_photo():
     os.makedirs(f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}", exist_ok=True)
 
     picam2.start()
+    picam2.start_preview()
 
     for _ in range(3):
         GPIO.output(LED_PIN, True)
@@ -109,6 +110,8 @@ def take_photo():
     picam2.capture_file(img_gen("with_outages", shake_time))
 
     GPIO.output(LED_PIN, False)
+
+    picam2.stop_preview()
 
 
 def main():
