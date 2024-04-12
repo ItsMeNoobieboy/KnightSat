@@ -2,7 +2,6 @@ import time
 import board
 import sys
 import os
-import lightblue
 
 from adafruit_lsm6ds.lsm6dsox import LSM6DSOX as LSM6DS
 from adafruit_lis3mdl import LIS3MDL
