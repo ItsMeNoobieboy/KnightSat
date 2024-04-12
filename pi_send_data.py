@@ -1,6 +1,3 @@
-from image_registration import image_registration
-from find_outages import find_difference
-
 import time
 import board
 import sys
