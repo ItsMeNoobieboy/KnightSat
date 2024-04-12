@@ -9,6 +9,7 @@ REPO_PATH = os.path.abspath(__file__)
 FOLDER_PATH = "image_analysis/cubesat_output"
 
 repo = git.Repo("")
+origin = repo.remotes.origin
 
 last_commit = repo.head.commit
 
@@ -18,7 +19,7 @@ while True:
 
     sleep(1)
 
-    repo.pull('origin','main')
+    origin.pull()
 
     new_commit = repo.head.commit
 
@@ -41,7 +42,7 @@ while True:
             with_outages_path,
             aligned_image_path
         )
-        
+
         find_difference(
             no_outages_path,
             aligned_image_path + ".png",
