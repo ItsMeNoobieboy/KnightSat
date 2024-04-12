@@ -20,7 +20,7 @@ while True:
     sleep(1)
 
     try:
-        origin.pull()
+        origin.pull("main")
     except git.exc.GitCommandError as e:
         print(f"Failed to pull from the repository: {e}")
 
