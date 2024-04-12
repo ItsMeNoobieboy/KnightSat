@@ -28,6 +28,8 @@ while True:
 
     if (last_commit != new_commit):
 
+        print("recieved commit!")
+
         folders = os.listdir(path_to_output)
 
         shake_time = max(folders)
@@ -51,6 +53,8 @@ while True:
             aligned_image_path + ".png",
             outage_map_path
         )
+
+        print("analyzed the images!")
 
 
 
