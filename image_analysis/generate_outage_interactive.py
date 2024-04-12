@@ -5,7 +5,6 @@ import io
 from make_mask import make_mask
 from create_outages import edit_image
 from image_to_binary import image_to_binary
-from find_outages import find_difference
 
 class DrawingApp:
     def __init__(self, master, background_path):
@@ -64,7 +63,7 @@ class DrawingApp:
         mask = self.generate_mask()
 
         with_outages = edit_image(image_to_binary(self.background_image.copy().crop((0, 0, 1024, 1024))), image_to_binary(mask.copy().crop((0, 0, 1024, 1024))))
-        with_outages.save("image_analysis/image_test_pairs/london/with_outages.png")
+        with_outages.save("image_analysis/image_test_pairs/london/with_outages2.png")
         print("finished!")
 
 

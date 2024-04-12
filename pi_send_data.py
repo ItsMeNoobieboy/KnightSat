@@ -5,6 +5,7 @@ import time
 import board
 import sys
 import os
+import lightblue
 
 from adafruit_lsm6ds.lsm6dsox import LSM6DSOX as LSM6DS
 from adafruit_lis3mdl import LIS3MDL
@@ -112,31 +113,11 @@ def take_photo():
 
     GPIO.output(LED_PIN, False)
 
-    return shake_time
-
 
 def main():
     while True:
-        shake_time = take_photo()
-
-        no_outages_path = img_gen("no_outages", shake_time)
-        with_outages_path = img_gen("with_outages", shake_time)
-        aligned_image_path = f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/aligned_image"
-
-        print(no_outages_path)
-        print(with_outages_path)
-        print(aligned_image_path)
-
-        image_registration(
-            no_outages_path,
-            with_outages_path,
-            f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/aligned_image",
-        )
-        find_difference(
-            no_outages_path,
-            f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/aligned_image.png",
-            f"{REPO_PATH}/{FOLDER_PATH}/{shake_time}/outage_map",
-        )
+        take_photo()
+        
         git_push()
 
 
