@@ -56,6 +56,8 @@ while True:
 
         print("analyzed the images!")
 
+        last_commit = new_commit
+
 
 
 
