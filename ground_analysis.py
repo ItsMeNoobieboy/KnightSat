@@ -42,17 +42,8 @@ while True:
         aligned_image_path = f"{path_to_folder}/aligned_image"
         outage_map_path = f"{path_to_folder}/outage_map"
 
-        image_registration(
-            no_outages_path,
-            with_outages_path,
-            aligned_image_path
-        )
-
-        find_difference(
-            no_outages_path,
-            aligned_image_path + ".png",
-            outage_map_path
-        )
+        image_registration(no_outages_path, with_outages_path, aligned_image_path)
+        find_difference(no_outages_path, aligned_image_path + ".png", outage_map_path)
 
         print("analyzed the images!")
 
