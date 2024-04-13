@@ -56,7 +56,9 @@ while True:
 
         print("analyzed the images!")
 
-        last_commit = new_commit
+        origin.push()
+
+        last_commit = repo.head.commit
 
 
 
