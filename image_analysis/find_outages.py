@@ -24,6 +24,3 @@ def find_difference(no_outage_path, with_outage_path, output_path):
 
     # Save the result
     no_outage.save(f"{output_path}.png")
-
-
-# find_difference("image_analysis/satelite_images/city.png", "image_analysis/aligned_output/test1.png", "image_analysis/differences/difference7")

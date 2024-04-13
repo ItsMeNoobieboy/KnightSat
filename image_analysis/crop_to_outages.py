@@ -55,9 +55,3 @@ def find_red_areas(image_path, crop_size=(100, 100)):
         cropped_images.append(crop)
 
     return cropped_images
-
-# Usage
-cropped_images = find_red_areas('image_analysis/cubesat_output/03-16-2024_23:41/outage_map.png')
-for i, img in enumerate(cropped_images):
-    img.show()
-    img.save(f'cropped_image_{i}.png')  # Uncomment to save the images
