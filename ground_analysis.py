@@ -47,8 +47,4 @@ while True:
 
         print("analyzed the images!")
 
-        repo.git.add(REPO_PATH + "/" + FOLDER_PATH)
-        repo.index.commit("Analyzed Images")
-        origin.push("main")
-
         last_commit = repo.head.commit
