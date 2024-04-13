@@ -59,8 +59,3 @@ while True:
         origin.push()
 
         last_commit = repo.head.commit
-
-
-
-
-
