@@ -14,7 +14,7 @@ def make_mask(mask, image):
     for y in range(min([height, image.size[1]])):
         for x in range(min([width, image.size[0]])):
             # Check if the pixel in the first image is red
-            if pixel_data1[x, y] == (255, 0, 0, 255):  # Assuming pure red, adjust as needed
+            if pixel_data1[x, y] == (255, 0, 0, 255):
                 # Set the corresponding pixel in the second image to transparent
                 pixel_data2[x, y] = (0, 0, 0, 0)
 

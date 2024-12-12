@@ -22,9 +22,7 @@ def image_registration(no_outages_path, with_outages_path, output_path):
     kp1, d1 = orb_detector.detectAndCompute(with_outages, None)
     kp2, d2 = orb_detector.detectAndCompute(no_outages, None)
 
-    # Match features between the two images.
-    # We create a Brute Force matcher with
-    # Hamming distance as measurement mode.
+    # Brute Force matcher with Hamming distance as measurement mode.
     matcher = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
 
     # Match the two sets of descriptors.
