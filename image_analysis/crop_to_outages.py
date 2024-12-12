@@ -9,9 +9,7 @@ def find_optimal_clusters(data, max_k=10):
         kmeans = KMeans(n_clusters=k)
         kmeans.fit(data)
         distortions.append(sum(np.min(cdist(data, kmeans.cluster_centers_, 'euclidean'), axis=1)) / data.shape[0])
-    
-    # You can further refine this method to choose the best K, e.g., using the Elbow method
-    # For simplicity, we'll choose K where the reduction in distortion diminishes
+   
     k_optimal = 1 + next(i for i, diff in enumerate(np.diff(distortions)) if diff > -0.1)
     return min(k_optimal, max_k)
 

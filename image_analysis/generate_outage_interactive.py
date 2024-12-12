@@ -14,15 +14,12 @@ class DrawingApp:
         self.canvas_width = 500
         self.canvas_height = 500
 
-        # Create a black canvas
         self.canvas = tk.Canvas(self.master, width=self.canvas_width, height=self.canvas_height)
         self.canvas.pack()
 
-        # Load your background image here
         self.background_image = Image.open(background_path)
         self.background_photo = ImageTk.PhotoImage(self.background_image)
 
-        # Place the image under the canvas
         self.canvas.create_image(0, 0, anchor=tk.NW, image=self.background_photo)
 
         self.setup_buttons()

@@ -19,8 +19,6 @@ def image_registration(no_outages_path, with_outages_path, output_path):
     orb_detector = cv2.ORB_create(5000)
 
     # Find keypoints and descriptors.
-    # The first arg is the image, second arg is the mask
-    # (which is not required in this case).
     kp1, d1 = orb_detector.detectAndCompute(with_outages, None)
     kp2, d2 = orb_detector.detectAndCompute(no_outages, None)
 
@@ -50,8 +48,7 @@ def image_registration(no_outages_path, with_outages_path, output_path):
     # Find the homography matrix.
     homography, mask = cv2.findHomography(p1, p2, cv2.RANSAC)
 
-    # Use this matrix to transform the
-    # colored image wrt the reference image.
+    # Use this matrix to transform the colored image wrt the reference image.
     transformed_img = cv2.warpPerspective(
         with_outages_color, homography, (width, height)
     )

@@ -77,7 +77,7 @@ def take_photo():
         accelx, accely, accelz = accel_gyro.acceleration
         total = (accelx**2 + accely**2 + accelz**2) ** 0.5
 
-        # CHECKS IF READINGS ARE ABOVE THRESHOLD -> done
+        # checks if readings are above threshold -> done
         if total > THRESHOLD:
             print(f"Total reached {total:.3f}")
             break
